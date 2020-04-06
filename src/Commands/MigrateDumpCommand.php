@@ -163,7 +163,7 @@ final class MigrateDumpCommand extends Command
         // Include migration rows to avoid unnecessary reruns conflicting.
         exec(
             static::mysqlCommandPrefix($db_config)
-                . ' migrations'
+                . ' ' . $db_config['prefix'] . 'migrations'
                 . ' --no-create-info'
                 . ' --skip-extended-insert'
                 . ' --skip-routines'
@@ -201,7 +201,7 @@ final class MigrateDumpCommand extends Command
             static::mysqlCommandPrefix($db_config)
             . ' --result-file=' . escapeshellarg($data_sql_path)
             . ' --no-create-info --skip-routines --skip-triggers'
-            . ' --ignore-table=' . escapeshellarg($db_config['database'] . '.migrations'),
+            . ' --ignore-table=' . escapeshellarg($db_config['database'] . '.' . $db_config['prefix'] . 'migrations'),
             $exit_code
         );
 
