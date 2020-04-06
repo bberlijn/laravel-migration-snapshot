@@ -105,7 +105,7 @@ final class MigrateLoadCommand extends Command
         $command = 'cat ' . escapeshellarg($path)
             . ' | mysql --no-beep'
             . ' --host=' . escapeshellarg($db_config['host'])
-            . ' --port=' . escapeshellarg($db_config['port'])
+            . ' --port=' . escapeshellarg($db_config['port'] ?? 3306)
             . ' --user=' . escapeshellarg($db_config['username'])
             . ' --password=' . escapeshellarg($db_config['password'])
             . ' --database=' . escapeshellarg($db_config['database']);

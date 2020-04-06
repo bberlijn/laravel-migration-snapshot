@@ -240,7 +240,7 @@ final class MigrateDumpCommand extends Command
         return 'mysqldump --routines --skip-add-drop-table'
             . ' --skip-add-locks --skip-comments --skip-set-charset --tz-utc --set-gtid-purged=OFF'
             . ' --host=' . escapeshellarg($db_config['host'])
-            . ' --port=' . escapeshellarg($db_config['port'])
+            . ' --port=' . escapeshellarg($db_config['port'] ?? 3306)
             . ' --user=' . escapeshellarg($db_config['username'])
             . ' --password=' . escapeshellarg($db_config['password'])
             . ' ' . escapeshellarg($db_config['database']);
